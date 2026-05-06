@@ -1,0 +1,15 @@
+{
+  "deviceOrientation": "portrait",
+  "showStatusBar": false,
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 5000,
+    "uploadFile": 15000,
+    "downloadFile": 15000
+  },
+  "workers": "workers/",
+  "window": {
+    "navigationBarTitleText": "道境征途",
+    "backgroundColor": "#0a0a1a"
+  }
+}
