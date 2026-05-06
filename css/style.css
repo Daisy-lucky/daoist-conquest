@@ -1,0 +1,649 @@
+/* ============================================================ */
+/* 《道境征途》- 全局样式                                        */
+/* ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-dark: #0a0a1a;
+  --bg-panel: rgba(15, 15, 40, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --gold: #d4a34a;
+  --gold-light: #f0d080;
+  --text-primary: #f0e6d3;
+  --text-secondary: #a09880;
+  --border-color: rgba(212, 163, 74, 0.3);
+  --accent-blue: #4ecdc4;
+  --accent-red: #e74c3c;
+  --panel-radius: 10px;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+/* ===== 主菜单 ===== */
+#menu-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+  z-index: 100;
+}
+
+.menu-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(212, 163, 74, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.menu-container {
+  text-align: center;
+  z-index: 1;
+  animation: fadeIn 1s ease;
+}
+
+.menu-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(212, 163, 74, 0.3), 0 4px 8px rgba(0,0,0,0.5);
+  margin-bottom: 8px;
+  letter-spacing: 16px;
+}
+
+.menu-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  letter-spacing: 8px;
+  margin-bottom: 60px;
+  font-style: italic;
+}
+
+.menu-subtitle span {
+  color: var(--gold);
+}
+
+.difficulty-section {
+  margin-bottom: 40px;
+}
+
+.difficulty-section p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+}
+
+.diff-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-diff {
+  padding: 14px 32px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  letter-spacing: 2px;
+}
+
+.btn-diff:hover {
+  background: rgba(212, 163, 74, 0.15);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(212, 163, 74, 0.2);
+}
+
+.btn-diff .diff-label {
+  display: block;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.btn-diff .diff-desc {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.menu-footer {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-secondary);
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* ===== 游戏界面 ===== */
+#game-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* 顶部栏 */
+#top-bar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: linear-gradient(180deg, rgba(10,10,26,0.95), rgba(10,10,26,0.8));
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.game-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 4px;
+}
+
+.turn-info {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 4px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.resource {
+  font-size: 14px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.res-icon {
+  font-size: 16px;
+}
+
+/* 主内容 */
+#main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* 地图区域 */
+#map-container {
+  flex: 1;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(78, 205, 196, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(212, 163, 74, 0.03) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+#map-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 侧边栏 */
+#side-panel {
+  width: 280px;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border-color);
+  overflow-y: auto;
+  flex-shrink: 0;
+  padding: 12px;
+}
+
+.panel-section {
+  margin-bottom: 16px;
+  background: var(--bg-card);
+  border-radius: var(--panel-radius);
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.panel-section h3 {
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* 城池详情 */
+.city-detail {
+  margin-bottom: 10px;
+}
+
+.detail-name {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Noto Serif SC', serif;
+  margin-bottom: 4px;
+}
+
+.detail-type {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.detail-owner {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.detail-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.detail-stats b {
+  color: var(--text-primary);
+}
+
+.detail-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.city-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.placeholder-text {
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.game-message {
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(212, 163, 74, 0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--gold-light);
+  line-height: 1.4;
+}
+
+.enemy-info {
+  font-size: 12px;
+  color: var(--accent-red);
+  padding: 6px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 4px;
+}
+
+/* 法术列表 */
+.spell-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spell-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.spell-item:hover {
+  background: rgba(78, 205, 196, 0.1);
+}
+
+.spell-item.spell-cd {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.spell-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+
+.spell-name {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.spell-cost {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.spell-cd-badge {
+  font-size: 10px;
+  color: var(--accent-red);
+  background: rgba(231, 76, 60, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* 势力列表 */
+.faction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faction-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.faction-item.faction-dead {
+  opacity: 0.4;
+}
+
+.faction-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.faction-name {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.faction-stats {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.dead-tag {
+  font-size: 10px;
+  color: var(--accent-red);
+  padding: 1px 6px;
+  border: 1px solid var(--accent-red);
+  border-radius: 4px;
+}
+
+/* 底部栏 */
+#bottom-bar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: linear-gradient(0deg, rgba(10,10,26,0.95), rgba(10,10,26,0.8));
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.action-hint {
+  font-size: 14px;
+  color: var(--accent-blue);
+}
+
+/* 按钮 */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.btn-action {
+  background: rgba(78, 205, 196, 0.15);
+  color: var(--accent-blue);
+  border-color: rgba(78, 205, 196, 0.3);
+}
+
+.btn-action:hover {
+  background: rgba(78, 205, 196, 0.25);
+}
+
+.btn-action:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--accent-red);
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+.btn-cancel:hover {
+  background: rgba(231, 76, 60, 0.25);
+}
+
+.btn-end-turn {
+  background: rgba(212, 163, 74, 0.2);
+  color: var(--gold);
+  border-color: var(--gold);
+  font-weight: 700;
+  padding: 10px 28px;
+  font-size: 14px;
+}
+
+.btn-end-turn:hover {
+  background: rgba(212, 163, 74, 0.35);
+  box-shadow: 0 0 20px rgba(212, 163, 74, 0.2);
+}
+
+.btn-restart {
+  background: var(--gold);
+  color: #1a1a2e;
+  font-weight: 700;
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  margin-top: 20px;
+}
+
+.btn-restart:hover {
+  background: var(--gold-light);
+  transform: scale(1.05);
+}
+
+/* 战报面板 */
+#log-panel {
+  width: 220px;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border-color);
+  overflow-y: auto;
+  flex-shrink: 0;
+  padding: 12px;
+  font-size: 12px;
+}
+
+#log-panel h3 {
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-entry {
+  padding: 6px 8px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+.log-turn {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.log-title {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.log-detail {
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 2px;
+}
+
+/* 游戏结束覆盖层 */
+#game-over-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.8);
+  z-index: 50;
+  backdrop-filter: blur(4px);
+}
+
+#game-over-overlay.hidden {
+  display: none;
+}
+
+.game-over-content {
+  text-align: center;
+  padding: 60px 80px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.5s ease;
+}
+
+.game-over-content.victory {
+  background: linear-gradient(135deg, rgba(212,163,74,0.15), rgba(78,205,196,0.1));
+  border-color: var(--gold);
+}
+
+.game-over-content.defeat {
+  background: linear-gradient(135deg, rgba(231,76,60,0.15), rgba(0,0,0,0.3));
+  border-color: var(--accent-red);
+}
+
+.game-over-content h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.victory h1 { color: var(--gold); text-shadow: 0 0 30px rgba(212,163,74,0.3); }
+.defeat h1 { color: var(--accent-red); }
+
+.game-over-content p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.stats-line {
+  font-size: 18px !important;
+  color: var(--gold) !important;
+  margin-top: 16px !important;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212,163,74,0.3); border-radius: 2px; }
+
+/* 通用隐藏 */
+.hidden { display: none !important; }
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+  #side-panel { width: 240px; }
+  #log-panel { width: 180px; }
+}
+
+@media (max-width: 900px) {
+  #log-panel { display: none; }
+  #side-panel { display: none; }
+  #side-panel { width: 200px; }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>道境征途 — Daoist Conquest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☯</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== 主菜单 ========== -->
+  <div id="menu-screen">
+    <div class="menu-bg"></div>
+    <div class="menu-container">
+      <div class="menu-title">☯ 道境征途</div>
+      <div class="menu-subtitle">— <span>Daoist Conquest</span> —</div>
+      <div class="difficulty-section">
+        <p>— 选择难度 —</p>
+        <div class="diff-buttons">
+          <button class="btn-diff" onclick="startGame('easy')">
+            <span class="diff-label">🌱 简单</span>
+            <span class="diff-desc">AI 产出降低，轻松体验</span>
+          </button>
+          <button class="btn-diff" onclick="startGame('normal')">
+            <span class="diff-label">☯ 普通</span>
+            <span class="diff-desc">标准难度，旗鼓相当</span>
+          </button>
+          <button class="btn-diff" onclick="startGame('hard')">
+            <span class="diff-label">🔥 困难</span>
+            <span class="diff-desc">AI 获得加成，挑战升级</span>
+          </button>
+          <button class="btn-diff" onclick="startGame('master')">
+            <span class="diff-label">👑 宗师</span>
+            <span class="diff-desc">AI 全力出击，极限挑战</span>
+          </button>
+        </div>
+      </div>
+      <div class="menu-footer">道教神话风格回合制策略占城游戏 · 基于《占城大师》玩法设计</div>
+    </div>
+  </div>
+
+  <!-- ========== 游戏界面 ========== -->
+  <div id="game-screen" class="hidden">
+    <!-- 顶部信息栏 -->
+    <div id="top-bar"></div>
+
+    <!-- 主内容 -->
+    <div id="main-content">
+      <!-- 地图 -->
+      <div id="map-container"></div>
+
+      <!-- 右侧面板 -->
+      <div id="side-panel"></div>
+
+      <!-- 战报 -->
+      <div id="log-panel"></div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div id="bottom-bar"></div>
+
+    <!-- 游戏结束覆盖 -->
+    <div id="game-over-overlay" class="hidden"></div>
+  </div>
+
+  <!-- ========== 游戏脚本 ========== -->
+  <script src="js/game-data.js"></script>
+  <script src="js/game-state.js"></script>
+  <script src="js/spells.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
